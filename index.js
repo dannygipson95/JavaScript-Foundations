@@ -154,26 +154,18 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
 
-variableInterestRatefunction (P, I, N, C){
+function variableInterestRate (P, I, N){
     
     let principal = P;
   
     let interestRate = I;
     
     let years = N;
-  
-    let creditScore = C;
 
-    for(interestRate= interestRate - .02 ; interestRate < I + .02; interestRate + .005){
+    for(i = I - .02; i <= I + .02; i = i + .005){
 
-        if (creditScore > 740){
-            interestRate = interestRate - (interestRate * .05);
-        } else if (creditScore < 660){
-            interestRate =interestRate + (interestRate * .05);
-        } else {
-            interestRate = interestRate;
-        }
-    
+        interestRate = i;
+
         let monthlyInterestRate = interestRate/12;
     
         let periods = years*12;
