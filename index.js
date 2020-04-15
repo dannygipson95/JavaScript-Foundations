@@ -49,7 +49,7 @@ If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly 
 
 function mortgageCalculator(Name){
     let principal = 200000;
-    
+
     let interestRate = 0.05;
 
     let years = 30;
@@ -77,7 +77,24 @@ mortgageCalculator(2000000, 0.05, 30); <-- should return 1,073.64
 */
 
 function mortgageCalculator(P, I, N){
+    
+  let principal = P;
 
+  let interestRate = I;
+
+  let years = N;
+
+  let monthlyInterestRate = interestRate/12;
+
+  let periods = years*12;
+
+  let numerator = principal * monthlyInterestRate * Math.pow((1 + monthlyInterestRate), periods);
+
+  let denominator = Math.pow(1 + monthlyInterestRate, periods) - 1;
+
+  let monthlyRate = Math.round(100 * (numerator/denominator))/100;
+
+  return monthlyRate;
 }
 
 
@@ -88,6 +105,36 @@ function mortgageCalculator(P, I, N){
 Then, add control flow within your function such that IF creditScore is above 740, interest rate drops by 0.5%, if credit score is below 660, interest rate increases by 0.5% and if credit score is anywhere between 660 and 740 interest rate doesn't change.
 */
 
+function mortgageCalculator(P, I, N, C){
+    
+  let principal = P;
+
+  let interestRate = I;
+  
+  let years = N;
+
+  let creditScore = C;
+
+  if (creditScore > 740){
+      interestRate = interestRate - (interestRate * .5);
+  } else if (creditScore < 660){
+      interestRate =interestRate + (interestRate * .5);
+  } else {
+      interestRate = interestRate;
+  }
+
+  let monthlyInterestRate = interestRate/12;
+
+  let periods = years*12;
+
+  let numerator = principal * monthlyInterestRate * Math.pow((1 + monthlyInterestRate), periods);
+
+  let denominator = Math.pow(1 + monthlyInterestRate, periods) - 1;
+
+  let monthlyRate = Math.round(100 * (numerator/denominator))/100;
+
+  return monthlyRate;
+}
 
 
 
@@ -107,7 +154,39 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
 
+variableInterestRatefunction (P, I, N, C){
+    
+    let principal = P;
+  
+    let interestRate = I;
+    
+    let years = N;
+  
+    let creditScore = C;
 
+    for(interestRate= interestRate - .02 ; interestRate < I + .02; interestRate + .005){
+
+        if (creditScore > 740){
+            interestRate = interestRate - (interestRate * .05);
+        } else if (creditScore < 660){
+            interestRate =interestRate + (interestRate * .05);
+        } else {
+            interestRate = interestRate;
+        }
+    
+        let monthlyInterestRate = interestRate/12;
+    
+        let periods = years*12;
+    
+        let numerator = principal * monthlyInterestRate * Math.pow((1 + monthlyInterestRate), periods);
+    
+        let denominator = Math.pow(1 + monthlyInterestRate, periods) - 1;
+    
+        let monthlyRate = Math.round(100 * (numerator/denominator))/100;
+    
+        console.log(monthlyRate);
+  }
+}
 
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
