@@ -195,3 +195,27 @@ function variableInterestRate (P, I, N){
 
 
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
+
+
+function monthlySpending(P, I, N, tax, insurance, hoa){
+    
+    let principal = P;
+  
+    let interestRate = I;
+  
+    let years = N;
+  
+    let monthlyInterestRate = interestRate/12;
+  
+    let periods = years*12;
+  
+    let numerator = principal * monthlyInterestRate * Math.pow((1 + monthlyInterestRate), periods);
+  
+    let denominator = Math.pow(1 + monthlyInterestRate, periods) - 1;
+  
+    let monthlyRate = Math.round(100 * (numerator/denominator))/100;
+  
+    let spending = monthlyRate + tax + insurance + hoa;
+
+    return spending;
+  }
